@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RemoteTrainingAPI</name>
+    </assembly>
+    <members>
+        <!--<member name="M:MVoznikAPI.Controllers.AuthController.RequestToken(MVoznikAPI.Models.TokenModel)">
+            <summary>
+                Prijava uporabnika
+            </summary>
+            <returns>JWT Token</returns>
+            <response code="200">Response JWT Token</response>
+            <response code="400">Bad request error massage</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:MVoznikAPI.Controllers.AuthController.RequestRegister(MVoznikAPI.Models.RegisterModel)">
+            <summary>
+                Registracija uporabnika
+            </summary>
+            <returns>Boolean value</returns>
+            <response code="201">Successfully register user</response>
+            <response code="400">Bad request error massage</response>
+            <response code="401">Unauthorized</response>
+        </member>-->
+    </members>
+</doc>
