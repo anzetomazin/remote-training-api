@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RemoteTrainingApi.Users.Models;
+using RemoteTrainingApi.Workouts.Models;
 
 namespace RemoteTrainingApi
 {
@@ -13,7 +15,11 @@ namespace RemoteTrainingApi
         {
         }
 
-
+        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Workout> Workout { get; set; }
+        public virtual DbSet<Exercise> Exercise { get; set; }
+        public virtual DbSet<ExerciseOnWorkout> ExerciseOnWorkout { get; set; }
+        public virtual DbSet<ExerciseSet> ExerciseSet { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

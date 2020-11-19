@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using RemoteTrainingApi.Authentication;
+using RemoteTrainingApi.Workouts;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,7 +33,7 @@ namespace RemoteTrainingApi
             services.AddCors();
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
-            services.AddDbContext<RTADbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("MVoznikContext")));
+            services.AddDbContext<RTADbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("RTADbContext")));
 
             // JWT Token services
             services.Configure<Token>(Configuration.GetSection("token"));
@@ -65,6 +66,8 @@ namespace RemoteTrainingApi
 
             // Repository services
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IAuthRepo, AuthRepo>();
+            services.AddScoped<IWorkoutRepo, WorkoutRepo>();
 
 
             services.AddHttpContextAccessor();
@@ -75,7 +78,7 @@ namespace RemoteTrainingApi
                 {
                     Title = "Remote Training API",
                     Version = "v1",
-                    Description = "API for remote training web and mobile applications."
+                    Description = "API for remote training mobile application."
                 });
 
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
