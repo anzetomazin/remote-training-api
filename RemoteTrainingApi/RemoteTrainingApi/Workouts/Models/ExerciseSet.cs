@@ -9,7 +9,9 @@
         public int PauseSeconds { get; set; }
         public bool IsCompleted { get; set; }
         public int ExerciseOnWorkoutId { get; set; }
+        public int UserOnWorkoutId { get; set; }
 
         public virtual ExerciseOnWorkout ExerciseOnWorkout { get; set; }
+        public virtual UserOnWorkout UserOnWorkout { get; set; }
     }
 }

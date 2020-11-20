@@ -11,7 +11,7 @@ namespace RemoteTrainingApi.Users.Models
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public virtual ICollection<Workout> Workouts { get; set; }
         public virtual ICollection<Exercise> Exercises { get; set; }
+        public virtual ICollection<UserOnWorkout> UsersOnWorkout { get; set; }
     }
 }

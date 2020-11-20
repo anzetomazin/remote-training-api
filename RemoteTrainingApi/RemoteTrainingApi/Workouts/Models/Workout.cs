@@ -1,5 +1,4 @@
-﻿using RemoteTrainingApi.Users.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace RemoteTrainingApi.Workouts.Models
 {
@@ -9,8 +8,9 @@ namespace RemoteTrainingApi.Workouts.Models
         public string Name { get; set; }
         public int UserId { get; set; }
         public bool IsTemplate { get; set; }
+        public int? GroupId { get; set; }
 
         public virtual ICollection<ExerciseOnWorkout> ExerciseOnWorkouts { get; set; }
-        public virtual User User { get; set; }
+        public virtual ICollection<UserOnWorkout> UsersOnWorkout { get; set; }
     }
 }

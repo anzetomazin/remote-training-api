@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RemoteTrainingApi;
 
 namespace RemoteTrainingApi.Migrations
 {
     [DbContext(typeof(RTADbContext))]
-    partial class RTADbContextModelSnapshot : ModelSnapshot
+    [Migration("20201119144224_Asd")]
+    partial class Asd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,10 +31,7 @@ namespace RemoteTrainingApi.Migrations
                     b.Property<int>("DiscussionId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MembershipId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
+                    b.Property<int>("MembershipId")
                         .HasColumnType("int");
 
                     b.HasKey("MessageId");
@@ -40,8 +39,6 @@ namespace RemoteTrainingApi.Migrations
                     b.HasIndex("DiscussionId");
 
                     b.HasIndex("MembershipId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Message");
                 });
@@ -70,12 +67,6 @@ namespace RemoteTrainingApi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("IsPublic")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("GroupId");
 
                     b.ToTable("Group");
@@ -91,9 +82,6 @@ namespace RemoteTrainingApi.Migrations
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -104,43 +92,6 @@ namespace RemoteTrainingApi.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Membership");
-                });
-
-            modelBuilder.Entity("RemoteTrainingApi.Groups.Models.Sport", b =>
-                {
-                    b.Property<int>("SportId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("SportId");
-
-                    b.ToTable("Sport");
-                });
-
-            modelBuilder.Entity("RemoteTrainingApi.Groups.Models.SportOnGroup", b =>
-                {
-                    b.Property<int>("SportOnGroupId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SportId")
-                        .HasColumnType("int");
-
-                    b.HasKey("SportOnGroupId");
-
-                    b.HasIndex("GroupId");
-
-                    b.HasIndex("SportId");
-
-                    b.ToTable("SportOnGroup");
                 });
 
             modelBuilder.Entity("RemoteTrainingApi.Users.Models.User", b =>
@@ -305,13 +256,9 @@ namespace RemoteTrainingApi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RemoteTrainingApi.Groups.Models.Membership", null)
+                    b.HasOne("RemoteTrainingApi.Groups.Models.Membership", "Membership")
                         .WithMany("Message")
-                        .HasForeignKey("MembershipId");
-
-                    b.HasOne("RemoteTrainingApi.Users.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("MembershipId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -336,21 +283,6 @@ namespace RemoteTrainingApi.Migrations
                     b.HasOne("RemoteTrainingApi.Users.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("RemoteTrainingApi.Groups.Models.SportOnGroup", b =>
-                {
-                    b.HasOne("RemoteTrainingApi.Groups.Models.Group", "Group")
-                        .WithMany("SportsOnGroup")
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RemoteTrainingApi.Groups.Models.Sport", "Sport")
-                        .WithMany("SportsOnGroup")
-                        .HasForeignKey("SportId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

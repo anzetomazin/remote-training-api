@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using RemoteTrainingApi.Authentication;
+using RemoteTrainingApi.Groups;
 using RemoteTrainingApi.Workouts;
 using System;
 using System.Collections.Generic;
@@ -68,6 +69,7 @@ namespace RemoteTrainingApi
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IAuthRepo, AuthRepo>();
             services.AddScoped<IWorkoutRepo, WorkoutRepo>();
+            services.AddScoped<IGroupRepo, GroupRepo>();
 
 
             services.AddHttpContextAccessor();

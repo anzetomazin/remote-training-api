@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RemoteTrainingApi;
 
 namespace RemoteTrainingApi.Migrations
 {
     [DbContext(typeof(RTADbContext))]
-    partial class RTADbContextModelSnapshot : ModelSnapshot
+    [Migration("20201119165545_Asd2")]
+    partial class Asd2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,9 +72,6 @@ namespace RemoteTrainingApi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("IsPublic")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -91,9 +90,6 @@ namespace RemoteTrainingApi.Migrations
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -104,43 +100,6 @@ namespace RemoteTrainingApi.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Membership");
-                });
-
-            modelBuilder.Entity("RemoteTrainingApi.Groups.Models.Sport", b =>
-                {
-                    b.Property<int>("SportId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("SportId");
-
-                    b.ToTable("Sport");
-                });
-
-            modelBuilder.Entity("RemoteTrainingApi.Groups.Models.SportOnGroup", b =>
-                {
-                    b.Property<int>("SportOnGroupId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SportId")
-                        .HasColumnType("int");
-
-                    b.HasKey("SportOnGroupId");
-
-                    b.HasIndex("GroupId");
-
-                    b.HasIndex("SportId");
-
-                    b.ToTable("SportOnGroup");
                 });
 
             modelBuilder.Entity("RemoteTrainingApi.Users.Models.User", b =>
@@ -336,21 +295,6 @@ namespace RemoteTrainingApi.Migrations
                     b.HasOne("RemoteTrainingApi.Users.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("RemoteTrainingApi.Groups.Models.SportOnGroup", b =>
-                {
-                    b.HasOne("RemoteTrainingApi.Groups.Models.Group", "Group")
-                        .WithMany("SportsOnGroup")
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RemoteTrainingApi.Groups.Models.Sport", "Sport")
-                        .WithMany("SportsOnGroup")
-                        .HasForeignKey("SportId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
