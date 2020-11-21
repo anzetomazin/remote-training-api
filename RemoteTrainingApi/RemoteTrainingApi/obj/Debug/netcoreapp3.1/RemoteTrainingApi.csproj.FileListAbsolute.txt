@@ -1,6 +1,5 @@
 D:\Remote training\remote-training-api\RemoteTrainingApi\RemoteTrainingApi\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Remote training\remote-training-api\RemoteTrainingApi\RemoteTrainingApi\bin\Debug\netcoreapp3.1\appsettings.json
-D:\Remote training\remote-training-api\RemoteTrainingApi\RemoteTrainingApi\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\Remote training\remote-training-api\RemoteTrainingApi\RemoteTrainingApi\bin\Debug\netcoreapp3.1\RemoteTrainingApi.exe
 D:\Remote training\remote-training-api\RemoteTrainingApi\RemoteTrainingApi\obj\Debug\netcoreapp3.1\RemoteTrainingApi.csprojAssemblyReference.cache
 D:\Remote training\remote-training-api\RemoteTrainingApi\RemoteTrainingApi\obj\Debug\netcoreapp3.1\RemoteTrainingApi.AssemblyInfoInputs.cache
@@ -69,3 +68,4 @@ D:\Remote training\remote-training-api\RemoteTrainingApi\RemoteTrainingApi\obj\D
 D:\Remote training\remote-training-api\RemoteTrainingApi\RemoteTrainingApi\obj\Debug\netcoreapp3.1\RemoteTrainingApi.dll
 D:\Remote training\remote-training-api\RemoteTrainingApi\RemoteTrainingApi\obj\Debug\netcoreapp3.1\RemoteTrainingApi.pdb
 D:\Remote training\remote-training-api\RemoteTrainingApi\RemoteTrainingApi\obj\Debug\netcoreapp3.1\RemoteTrainingApi.genruntimeconfig.cache
+D:\Remote training\remote-training-api\RemoteTrainingApi\RemoteTrainingApi\obj\Debug\netcoreapp3.1\scopedcss\bundle\RemoteTrainingApi.styles.css
